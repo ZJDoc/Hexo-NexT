@@ -34,3 +34,12 @@ extra_javascript:
 # 导航
 nav:
     - Home: index.md
+    - Hexo:
+      - 引言: hexo/index.md
+      - Get Started:
+        - 初识Hexo: hexo/base/初识Hexo.md
+        - Hexo安装: hexo/base/Hexo安装.md
+        - 新建网站: hexo/base/新建网站.md
+        - 文件添加: hexo/base/文件添加.md
+        - 文件配置: hexo/base/文件配置.md
+        - 本地服务器: hexo/base/本地服务器.md
