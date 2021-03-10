@@ -16,6 +16,11 @@
   <a href="https://pypi.org/project/zcls/"><img src="https://img.shields.io/badge/PYPI-zcls-brightgreen"></a>
 </p>
 
+当前版本要求：
+
+1. `Hexo: v5.2.0`
+2. `NexT: v8.2.1`
+
 ## 内容列表
 
 - [内容列表](#内容列表)
