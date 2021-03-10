@@ -18,8 +18,8 @@
 
 当前版本要求：
 
-1. `Hexo: v5.2.0`
-2. `NexT: v8.2.1`
+1. [Hexo: v5.4.0](https://hexo.io/news/2021/02/21/hexo-5-4-0-released/)
+2. [NexT: v8.2.2](https://theme-next.js.org/next-8-2-2-released/)
 
 ## 内容列表
 
