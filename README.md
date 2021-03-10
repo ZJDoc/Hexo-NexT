@@ -13,7 +13,9 @@
   <a href="https://github.com/RichardLitt/standard-readme"><img src="https://img.shields.io/badge/standard--readme-OK-green.svg?style=flat-square"></a>
   <a href="https://conventionalcommits.org"><img src="https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg"></a>
   <a href="http://commitizen.github.io/cz-cli/"><img src="https://img.shields.io/badge/commitizen-friendly-brightgreen.svg"></a>
-  <a href="https://pypi.org/project/zcls/"><img src="https://img.shields.io/badge/PYPI-zcls-brightgreen"></a>
+  <a href='https://hexo-next.readthedocs.io/zh_CN/latest/?badge=latest'>
+    <img src='https://readthedocs.org/projects/hexo-next/badge/?version=latest' alt='Documentation Status' />
+</a>
 </p>
 
 当前版本要求：
