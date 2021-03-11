@@ -43,3 +43,11 @@ nav:
         - 文件添加: hexo/base/文件添加.md
         - 文件配置: hexo/base/文件配置.md
         - 本地服务器: hexo/base/本地服务器.md
+      - Advanced:
+        - Hexo命令: hexo/advanced/Hexo命令.md
+        - 类别&标签: hexo/advanced/类别&标签.md
+        - 永久链接: hexo/advanced/永久链接.md
+        - 代码块设置: hexo/advanced/代码块设置.md
+        - 资源文件: hexo/advanced/资源文件.md
+        - 404页面: hexo/advanced/404页面.md
+        - '[gulp]性能优化': hexo/advanced/gulp-性能优化.md

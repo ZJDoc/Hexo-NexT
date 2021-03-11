@@ -1,19 +1,11 @@
 
 # [gulp]性能优化
 
-参考：
-
-[使用gulp插件加速hexo博客](https://blog.csdn.net/jinggege0818/article/details/82461795)
-
-[Hexo博客使用gulp压缩静态资源](https://segmentfault.com/a/1190000019842178)
-
 使用[gulp](https://gulpjs.com/)以及插件来压缩`html/css/js/image`等静态资源，加快博客访问速度
 
-`gulp`在版本`4.0.0`前后针对`JS`语法处理有区别，当前使用最新版本`v4.0.2`
+`gulp`在版本`4.0.0`前后针对`JS`语法处理有区别，当前使用最新版本`4.0.2`
 
-## 下载
-
-下载`gulp`以及相关模块
+## 安装
 
 ```
 $ npm install gulp -g
@@ -37,13 +29,13 @@ $ npm install babel-plugin-transform-remove-strict-mode --save
 
 ```
 $ gulp -v
-CLI version: 2.2.0
+CLI version: 2.3.0
 Local version: 4.0.2
 ```
 
 ## 配置
 
-在当前路径编辑`gulpfile.js`文件
+编辑`gulpfile.js`文件，放置于`~/`
 
 ```
 var gulp = require('gulp');
@@ -105,7 +97,8 @@ gulp.task('minify-images', function (done) {
     gulp.src('./public/images/**/*.*')
         .pipe(imagemin([
             imagemin.gifsicle({interlaced: true}),
-            imagemin.jpegtran({progressive: true}),
+            // imagemin.jpegtran({progressive: true}),
+            imagemin.mozjpeg({progressive: true}),
             imagemin.optipng({optimizationLevel: 5}),
             imagemin.svgo({
                 plugins: [
@@ -144,28 +137,30 @@ gulp.task('default', gulp.series(gulp.parallel('minify-html', 'minify-css', 'min
 在运行完`hexo generate`后就可以执行`gulp`
 
 ```
-$ gulp
-[09:52:35] Using gulpfile ~/Documents/zjzstu.github.io/blogs/gulpfile.js
-[09:52:35] Starting 'default'...
-[09:52:35] Starting 'minify-html'...
-[09:52:35] Starting 'minify-css'...
-[09:52:35] Starting 'minify-js'...
-[09:52:35] Starting 'minify-images'...
-[09:52:35] Finished 'minify-images' after 134 ms
-[09:52:38] Finished 'minify-css' after 3.29 s
-[09:52:39] Finished 'minify-js' after 4.23 s
-[09:52:39] Finished 'minify-html' after 4.51 s
-[09:52:39] Finished 'default' after 4.52 s
-[09:52:53] gulp-imagemin: Minified 0 images
+$ hexo generate && gulp
+INFO  Validating config
+INFO  Start processing
+INFO  Files loaded in 89 ms
+INFO  0 files generated in 44 ms
+[20:51:18] Using gulpfile ~/blogs/gulpfile.js
+[20:51:18] Starting 'default'...
+[20:51:18] Starting 'minify-html'...
+[20:51:18] Starting 'minify-css'...
+[20:51:18] Starting 'minify-js'...
+[20:51:18] Starting 'minify-images'...
+[20:51:18] Finished 'minify-images' after 122 ms
+[20:51:19] gulp-imagemin: Minified 1 image (saved 57.9 kB - 63.1%)
+[20:51:19] Finished 'minify-js' after 564 ms
+[20:51:19] Finished 'minify-css' after 572 ms
+[20:51:19] Finished 'minify-html' after 624 ms
+[20:51:19] Finished 'default' after 625 ms
 ```
 
 再执行`hexo server`即可
 
 ## `font-awesome`加载失败
 
-`gulp`压缩完成后，如果图标显示出错，说明`font-awesome`加载失败
-
-参考[小图标不显示 [check hexo-filter-optimize, and CDN configs maybe]](https://github.com/theme-next/hexo-filter-optimize/issues/10)和[ 添加插件后fontawesome图标失效 #8 ](https://github.com/theme-next/hexo-filter-optimize/issues/8)
+`gulp`压缩完成后，如果图标显示出错，说明`font-awesome`加载失败。参考[小图标不显示 [check hexo-filter-optimize, and CDN configs maybe]](https://github.com/theme-next/hexo-filter-optimize/issues/10)和[ 添加插件后fontawesome图标失效 #8 ](https://github.com/theme-next/hexo-filter-optimize/issues/8)
 
 有两种解决方案（*我使用第二种*）：
 
@@ -178,3 +173,31 @@ $ gulp
 ```
 fontawesome: https://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css
 ```
+
+## imagemin.jpegtran error
+
+错误信息如下：
+
+```
+[20:16:58] TypeError: imagemin.jpegtran is not a function
+    at /home/zj/blogs/gulpfile.js:60:22
+    at minify-images (/home/zj/blogs/node_modules/_undertaker@1.3.0@undertaker/lib/set-task.js:13:15)
+    at bound (domain.js:413:15)
+    at runBound (domain.js:424:12)
+    at asyncRunner (/home/zj/blogs/node_modules/_async-done@1.3.2@async-done/index.js:55:18)
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+[20:16:58] 'default' errored after 30 ms
+```
+
+参考[TypeError: imagemin.jpegtran is not a function](https://blog.csdn.net/qq_33521184/article/details/106130601)，解决：
+
+```
+    // imagemin.jpegtran({progressive: true}),
+    imagemin.mozjpeg({progressive: true}),
+```
+
+## 相关阅读
+
+* [使用gulp插件加速hexo博客](https://blog.csdn.net/jinggege0818/article/details/82461795)
+
+* [Hexo博客使用gulp压缩静态资源](https://segmentfault.com/a/1190000019842178)
