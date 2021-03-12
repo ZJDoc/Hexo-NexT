@@ -51,3 +51,23 @@ nav:
         - 资源文件: hexo/advanced/资源文件.md
         - 404页面: hexo/advanced/404页面.md
         - '[gulp]性能优化': hexo/advanced/gulp-性能优化.md
+    - NexT:
+      - 引言: next/index.md
+      - Base:
+        - 版本管理: next/base/版本管理.md
+        - 语言设置: next/base/语言设置.md
+        - 布局设置: next/base/布局设置.md
+        - 首页预览: next/base/首页预览.md
+        - 菜单栏: next/base/菜单栏.md
+        - 侧边栏: next/base/侧边栏.md
+        - 代码块配置: next/base/代码块配置.md
+        - Github图标: next/base/Github图标.md
+        - 版权信息: next/base/版权信息.md
+        - 打赏功能: next/base/打赏功能.md
+        - 标签页设置: next/base/标签页设置.md
+        - 标签云: next/base/标签云.md
+      - Advanced:
+        - 动态背景: next/advanced/动态背景.md
+        - 搜索服务: next/advanced/搜索服务.md
+        - 字数统计: next/advanced/字数统计.md
+        - RSS支持: next/advanced/RSS支持.md
