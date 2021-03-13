@@ -67,7 +67,17 @@ nav:
         - 标签页设置: next/base/标签页设置.md
         - 标签云: next/base/标签云.md
       - Advanced:
+        - 加载进度条: next/advanced/加载进度条.md
+        - 配置MathJax: next/advanced/配置MathJax.md
         - 动态背景: next/advanced/动态背景.md
         - 搜索服务: next/advanced/搜索服务.md
         - 字数统计: next/advanced/字数统计.md
+        - 字体设置: next/advanced/字体设置.md
         - RSS支持: next/advanced/RSS支持.md
+        - 首页置顶: next/advanced/首页置顶.md
+        - 图片显示: next/advanced/图片显示.md
+        - 调整页面宽度: next/advanced/调整页面宽度.md
+        - '[Gitalk]评论系统': next/advanced/gitalk-评论系统.md
+        - '[不蒜子]文章阅读次数': next/advanced/不蒜子-文章阅读次数.md
+        - '[百度统计]网站访问': next/advanced/百度统计-网站访问.md
+        - '[Baidu][Google]站点地图': next/advanced/Baidu-Google-站点地图.md
