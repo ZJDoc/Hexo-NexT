@@ -30,21 +30,23 @@
 修改主题`_config.yml`
 
 ```
+
 # Gitalk
-# Demo: https://gitalk.github.io
-# For more information: https://github.com/gitalk/gitalk
+# For more information: https://gitalk.github.io
 gitalk:
-  enable: false
-  github_id: # GitHub repo owner
-  repo: # Repository name to store issues
-  client_id: # GitHub Application Client ID
-  client_secret: # GitHub Application Client Secret
-  admin_user: # GitHub repo owner and collaborators, only these guys can initialize gitHub issues
+  enable: true
+  github_id: zjykzj # GitHub repo owner
+  repo: guestbook # Repository name to store issues
+  client_id: e15xxxxx63dce # GitHub Application Client ID
+  client_secret: 76cxxxxxf766 # GitHub Application Client Secret
+  admin_user: zjykzj # GitHub repo owner and collaborators, only these guys can initialize gitHub issues
   distraction_free_mode: true # Facebook-like distraction free mode
+  # When the official proxy is not available, you can change it to your own proxy address
+  proxy: https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token # This is official proxy adress
   # Gitalk's display language depends on user's browser or system environment
   # If you want everyone visiting your site to see a uniform language, you can set a force language value
   # Available values: en | es-ES | fr | ru | zh-CN | zh-TW
-  language:
+  language: zh-CN
 ```
 
 * 设置`enable`为`true`
@@ -68,6 +70,36 @@ gitalk:
 
     comments: false
 
+## Error: Request failed with status code 403
+
+这是由于代理服务器出错的问题，经过查询，发现是`NexT`提供的反向代理已停止服务
+
+```
+  # When the official proxy is not available, you can change it to your own proxy address
+  proxy: https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token # This is official proxy adress
+  # Gitalk's display language depends on user's browser or system environment
+```
+
+当前的解决方案就是自己新建一个反向代理服务器，启动`nginx`服务，配置如下：
+
+```
+   location = /login/oauth/access_token {
+       add_header Access-Control-Allow-Origin 'https://xxx.xxx.xxx';
+       add_header Access-Control-Allow-Methods 'GET, POST, OPTIONS';
+       add_header Access-Control-Allow-Headers 'DNT,X-Mx-ReqToken,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization';
+       if ($request_method = 'OPTIONS') {
+             return 204;
+       }
+       proxy_pass https://github.com;
+   }
+```
+
+自定义反向代理以重定向`github`地址，使用如下地址进行替换：
+
+```
+https://xxx.xxx.xxx/login/oauth/access_token
+```
+
 ## 相关阅读
 
 * [Gitalk](https://theme-next.js.org/docs/third-party-services/comments.html)
@@ -76,3 +108,8 @@ gitalk:
 * [gitalk/gitalk](https://github.com/gitalk/gitalk/blob/master/readme-cn.md)
 * [Hexo中Gitalk配置使用教程-可能是目前最详细的教程 | ioChen's Blog #3](https://github.com/iosite/gitalk/issues/3)
 * [ hexo next 主题配置 gitalk 评论后无法初始化创建 issue #115 ](https://github.com/gitalk/gitalk/issues/115)
+* [解决使用 Gitalk 登录授权报 403 的问题](https://www.qiansw.com/solve-the-problem-of-using-gitalk-authorization-403.html)
+* [Error: Request failed with status code 403](https://ask.csdn.net/questions/7125029)
+* [PSA: Public demo server (cors-anywhere.herokuapp.com) will be very limited by January 2021, 31st #301](https://github.com/Rob--W/cors-anywhere/issues/301)
+* [在授权gitalk后出现403错误 #429](https://github.com/gitalk/gitalk/issues/429)
+* [为博客添加 Gitalk 评论区](https://syvshc.github.io/2021-03-05-enable-gitalk/)
