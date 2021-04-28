@@ -196,6 +196,18 @@ fontawesome: https://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css
     imagemin.mozjpeg({progressive: true}),
 ```
 
+## Gulp:UnhandledPromiseRejectionWarning
+
+参考[Gulp:UnhandledPromiseRejectionWarning报错](https://blog.csdn.net/weixin_42018166/article/details/105506986)，重装以下插件
+
+```
+# 重装gulp-imagemin
+$ npm un gulp-imagemin
+$ npm i gulp-imagemin --save
+# 额外安装
+$ npm i imagemin-gifsicle imagemin-optipng --save
+```
+
 ## 相关阅读
 
 * [使用gulp插件加速hexo博客](https://blog.csdn.net/jinggege0818/article/details/82461795)
