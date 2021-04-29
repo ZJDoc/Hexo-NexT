@@ -81,3 +81,4 @@ nav:
         - '[不蒜子]文章阅读次数': next/advanced/不蒜子-文章阅读次数.md
         - '[百度统计]网站访问': next/advanced/百度统计-网站访问.md
         - '[Baidu][Google]站点地图': next/advanced/Baidu-Google-站点地图.md
+    - Deploy: deploy.md
