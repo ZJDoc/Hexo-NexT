@@ -18,6 +18,12 @@
 </a>
 </p>
 
+> ⚠️ **本仓库已停止维护**。  
+> 如需了解 **Hexo v8.1.1 + NexT v8.26.0** 的最新使用方法，请参考
+>
+> 1. [[Vibe Coding][Github Actions/Pages][Hexo/NexT]从零构建博客网站](https://blog.zjykzj.cn/posts/77788f37.html)
+> 2. [[Vibe Coding][Gitea Actions/Nginx][Hexo/NexT]从零构建博客网站2](https://blog.zjykzj.cn/posts/196b2d68.html)
+
 当前版本要求：
 
 1. [Hexo: v5.4.0](https://hexo.io/news/2021/02/21/hexo-5-4-0-released/)
